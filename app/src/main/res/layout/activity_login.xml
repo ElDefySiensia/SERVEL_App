@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <!-- VISTA SCROLLABLE -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- CONTENIDO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ENCABEZADO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/red">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SERVEL"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="60dp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+            <!-- CUERPO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="Servicio Electoral de Chile."
+                    android:textColor="@color/black"
+                    android:textSize="19dp"
+                    android:textAlignment="center"/>
+
+                <!-- CARTA LOGIN -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/carta_redondeada"
+                    android:elevation="4dp"
+                    android:layout_marginHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:text="Ingresa tu rut:"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:text="Ingresa tu clave:"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/boton_estilo_servel"
+                        android:text="Ingresar"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="italic"
+                        android:text="¿No te has registrado aún?"
+                        android:textAlignment="center"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_estilo_servel"
+                        android:text="Registrate"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+                <!-- CARTA LOGIN -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -104,7 +104,6 @@
                         android:layout_marginBottom="6dp"
                         android:textColor="@color/black"
                         android:textSize="14dp"
-                        android:textStyle="italic"
                         android:text="¿No te has registrado aún?"
                         android:textAlignment="center"/>
 
@@ -122,6 +121,21 @@
                 <!-- CARTA LOGIN -->
 
             </LinearLayout>
+
+            <!-- INFO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textStyle="italic"
+                android:text="Ésta aplicación fue creada con el propósito de modelar un MockUp la App móvil de Servel, no será destinada para el mercado."/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="100dp"
+                android:text="© 2025 DefySiensia."/>
 
         </LinearLayout>
     </ScrollView>

@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KnowShareMobile"
+rootProject.name = "SERVEL_App"
 include(":app")
- 

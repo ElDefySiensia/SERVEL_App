@@ -57,6 +57,5 @@ public class DatosElectoralesActivity extends AppCompatActivity {
             startActivity(volverAtras);
             finish();
         });
-
     }
 }

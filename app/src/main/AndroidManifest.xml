@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SERVEL_App">
 
+        <!-- Aqui las activities -->
+        <activity android:name=".DatosElectoralesActivity"/>
+        <activity android:name=".PortalActivity"/>
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
@@ -21,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
     </application>
 

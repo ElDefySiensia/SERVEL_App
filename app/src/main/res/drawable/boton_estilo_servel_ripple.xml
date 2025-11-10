@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Mi efecto de Ripple  -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#66000000">
+
+    <!-- Aquí envuelvo mi boton servel para que tenga el ripple -->
+    <item android:drawable="@drawable/boton_estilo_servel"/>
+</ripple>

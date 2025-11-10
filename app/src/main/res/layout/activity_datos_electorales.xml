@@ -28,11 +28,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SERVEL"
+                    android:letterSpacing="0.05"
+                    android:paddingVertical="5dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="60dp"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:text="SERVEL"/>
 
             </LinearLayout>
 
@@ -54,6 +56,7 @@
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -64,6 +67,7 @@
                         android:textAlignment="center"/>
 
                     <TextView
+                        android:id="@+id/tv_run"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_gris"
@@ -72,6 +76,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_nombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_blanco"
@@ -80,6 +85,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_circunscripcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_gris"
@@ -88,6 +94,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_distrito"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_blanco"
@@ -96,6 +103,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_pais"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_gris"
@@ -104,6 +112,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_habilitado_sufragar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_blanco"
@@ -112,6 +121,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_local_votacion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_gris"
@@ -120,6 +130,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_direccion_local"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_blanco"
@@ -128,6 +139,7 @@
                         android:textColor="@color/black"/>
 
                     <TextView
+                        android:id="@+id/tv_mesa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cuadrado_gris"
@@ -135,22 +147,52 @@
                         android:textSize="16dp"
                         android:textColor="@color/black"/>
 
-                    <Button
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Designaciones"
+                        android:textColor="@color/black"
+                        android:textSize="19dp"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_vocal_mesa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cuadrado_blanco"
+                        android:text="Vocal de Mesa"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/tv_miembro_colegio_escrutador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cuadrado_gris"
+                        android:text="Miembro Colegio Escrutador"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/boton_voto_en_linea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
-                        android:text=""
+                        android:text="Voto en Línea"
                         android:layout_marginTop="10dp"
                         android:textSize="15dp"/>
 
                     <Button
+                        android:id="@+id/boton_volver_atras"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
@@ -163,6 +205,15 @@
                 <!-- CARTA -->
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:textSize="13sp"
+                android:textColor="#66000000"
+                android:text="© 2025 DefySiensia."/>
 
         </LinearLayout>
     </ScrollView>

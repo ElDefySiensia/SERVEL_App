@@ -28,11 +28,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SERVEL"
+                    android:letterSpacing="0.05"
+                    android:paddingVertical="5dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="60dp"
-                    android:textAlignment="center"/>
+                    android:textSize="60sp"
+                    android:textAlignment="center"
+                    android:text="SERVEL"/>
 
             </LinearLayout>
 
@@ -46,128 +48,137 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Mi Portal."
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.02"
+                    android:paddingVertical="10dp"
+                    android:text="Mi Portal"
                     android:textColor="@color/black"
-                    android:textSize="19dp"
+                    android:textSize="19sp"
                     android:textAlignment="center"/>
 
                 <!-- CARTA -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="15dp"
                     android:orientation="vertical"
                     android:background="@drawable/carta_redondeada"
-                    android:elevation="4dp"
+                    android:padding="20dp"
+                    android:elevation="12dp"
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Seleccione un Servicio:"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:layout_marginBottom="15dp"/>
 
+                    <!-- ORDEN OPTIMIZADO -->
                     <Button
+                        android:id="@+id/boton_datos_electorales"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Consulta Datos Electorales"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_tramites"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Trámites"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_voto_exterior"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Voto en el Exterior"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_conoce_candidatos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        android:text="Conoce a los Candidatos"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="15sp"/>
+
+                    <Button
+                        android:id="@+id/boton_juntas_electorales"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Juntas Electorales"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_democracia_desinformacion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:textColor="@color/red"
-                        android:textStyle="bold"
-                        android:text="Conoce a los Candidatos Presidenciales"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Democracia y Desinformación Electoral"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_formacion_ciudadana"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Formación Ciudadana"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
+                        android:textSize="15sp"/>
 
                     <Button
+                        android:id="@+id/boton_cerrar_sesion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:textColor="@color/red"
+                        android:background="@drawable/boton_estilo_servel_ripple"
+                        app:backgroundTint="@color/red"
+                        android:textColor="@color/white"
                         android:textStyle="bold"
                         android:text="Cerrar Sesión"
                         android:layout_marginBottom="10dp"
-                        android:textSize="15dp"/>
-
+                        android:textSize="15sp"/>
                 </LinearLayout>
                 <!-- CARTA -->
 
@@ -177,7 +188,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:textSize="13sp"
+                android:textColor="#66000000"
                 android:text="© 2025 DefySiensia."/>
 
         </LinearLayout>

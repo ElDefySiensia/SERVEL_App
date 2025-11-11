@@ -10,7 +10,9 @@
     <!-- VISTA SCROLLABLE -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
 
         <!-- CONTENIDO -->
         <LinearLayout
@@ -50,66 +52,111 @@
                     android:textAllCaps="true"
                     android:letterSpacing="0.02"
                     android:paddingVertical="10dp"
-                    android:text="Voto en Línea"
+                    android:text="Servicio Electoral de Chile"
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textAlignment="center"/>
 
-                <!-- CARTA -->
+                <!-- CARTA LOGIN -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:orientation="vertical"
                     android:background="@drawable/carta_redondeada"
+                    android:elevation="12dp"
                     android:padding="20dp"
-                    android:elevation="4dp"
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Para este voto usted contará con una oportunidad, por favor asegurese de que su opción es la correcta, vote racionalmente."
-                        android:textSize="16sp"/>
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.02"
+                        android:paddingVertical="10dp"
+                        android:text="Nueva cuenta"
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:textAlignment="center"/>
 
-                    <ListView
-                        android:id="@+id/lista_candidatos"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingVertical="20dp"/>
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:text="Ingresa tu rut:"/>
+
+                    <EditText
+                        android:id="@+id/rut_registrar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ej. 11222333-4"
+                        android:inputType="text"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:text="Ingresa una clave:"/>
+
+                    <EditText
+                        android:id="@+id/clave_registrar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ej. 1234"
+                        android:inputType="textPassword"
+                        android:importantForAutofill="no"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:text="Ingresa la clave nuevamente:"/>
+
+                    <EditText
+                        android:id="@+id/clave_confirmar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:importantForAutofill="no"/>
 
                     <CheckBox
+                        android:id="@+id/check_condiciones"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Confirmo que mi voto es el correcto."/>
+                        android:text="Acepto que mis datos serán utilizados para el uso de esta aplicación."/>
+
 
                     <Button
-                        android:id="@+id/boton_enviar_voto"
+                        android:id="@+id/boton_crear_cuenta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/boton_estilo_servel_ripple"
-                        android:text="Enviar Voto"
+                        android:text="Crear Cuenta"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
                         android:textStyle="bold"/>
 
                     <Button
-                        android:id="@+id/boton_cancelar_voto"
+                        android:id="@+id/boton_volver_a_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel_ripple"
-                        app:backgroundTint="@color/red"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Cancelar Operación"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15sp"/>
+                        android:background="@drawable/boton_estilo_servel_ripple"
+                        android:text="Volver a Inicio de Sesión"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
-                <!-- CARTA -->
+                <!-- CARTA LOGIN -->
 
             </LinearLayout>
 
@@ -117,9 +164,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="13sp"
+                android:textColor="#66000000"
                 android:text="© 2025 DefySiensia."/>
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

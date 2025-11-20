@@ -5,14 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".VotoExteriorActivity">
 
     <!-- VISTA SCROLLABLE -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <!-- CONTENIDO -->
         <LinearLayout
@@ -40,7 +38,6 @@
 
             </LinearLayout>
 
-
             <!-- CUERPO -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,102 +50,56 @@
                     android:textAllCaps="true"
                     android:letterSpacing="0.02"
                     android:paddingVertical="10dp"
-                    android:text="Servicio Electoral de Chile"
+                    android:text="Voto Exterior"
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:textAlignment="center"/>
 
-                <!-- CARTA LOGIN -->
+                <!-- CARTA -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:orientation="vertical"
                     android:background="@drawable/carta_redondeada"
-                    android:elevation="12dp"
                     android:padding="20dp"
+                    android:elevation="4dp"
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Si se encuentra en el exterior, podrá ejercer su derecho a voto mediante los consulados habilitados. También podrá acceder a información sobre su local de votación y los procesos disponibles a través de la aplicación o consultar su local en el portal web oficial."
                         android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text="Ingresa tu rut:"/>
+                        android:paddingBottom="20dp"/>
 
-                    <EditText
-                        android:id="@+id/rut_login"
+                    <Button
+                        android:id="@+id/boton_mas_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Ej. 11222333-4"
-                        android:inputType="text"/>
+                        android:background="@drawable/boton_estilo_servel_ripple"
+                        android:text="Más Información"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:backgroundTint="@null"
+                        app:backgroundTint="@null"/>
 
-                    <TextView
+                    <Button
+                        android:id="@+id/boton_volver"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
                         android:layout_marginTop="10dp"
-                        android:text="Ingresa tu clave:"/>
-
-                    <EditText
-                        android:id="@+id/clave_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Clave Única"
-                        android:inputType="textPassword"
-                        android:importantForAutofill="no"/>
-
-                    <Button
-                        android:id="@+id/boton_ingresar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
                         android:background="@drawable/boton_estilo_servel_ripple"
-                        android:text="Ingresar"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:textColor="@color/red"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="6dp"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:text="¿Aún no te has registrado?"
-                        android:textAlignment="center"/>
-
-                    <Button
-                        android:id="@+id/boton_registrate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/boton_estilo_servel_ripple"
-                        android:text="Registrate"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:textColor="@color/red"
-                        android:textStyle="bold"/>
+                        app:backgroundTint="@color/red"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Volver"
+                        android:textSize="15sp"/>
 
                 </LinearLayout>
-                <!-- CARTA LOGIN -->
+                <!-- CARTA -->
 
             </LinearLayout>
-
-            <!-- INFO -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:textStyle="italic"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textColor="#99000000"
-                android:textSize="13sp"
-                android:lineSpacingExtra="4dp"
-                android:text="Esta aplicación fue creada con el propósito de modelar un prototipo de app móvil de Servel; no será destinada para el mercado. Logo temporal — propiedad de SERVEL. Usado solo con fines de práctica/estudio."/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -157,7 +108,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
+
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

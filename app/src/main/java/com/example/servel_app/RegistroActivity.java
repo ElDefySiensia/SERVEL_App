@@ -2,6 +2,7 @@ package com.example.servel_app;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
@@ -82,12 +83,22 @@ public class RegistroActivity extends AppCompatActivity {
                 return;
             }
 
-            //encriptar clave
-            String claveEncriptada = Utils.encriptarSHA256(clave);
-
             //conexion a la bd
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "servel.db", null, 1);
             SQLiteDatabase db = admin.getWritableDatabase();
+
+            //VALIDACIÓN: verificar si el rut ya existe
+            Cursor cursor = db.rawQuery("SELECT rut FROM usuarios WHERE rut = ?", new String[]{rut});
+            if(cursor.moveToFirst()){
+                Toast.makeText(this, "Este Rut ya tiene una cuenta registrada", Toast.LENGTH_LONG).show();
+                cursor.close();
+                db.close();
+                return; //cancelar creación
+            }
+            cursor.close();
+
+            //encriptar clave
+            String claveEncriptada = Utils.encriptarSHA256(clave);
 
             //insertar datos en tabla usuarios
             ContentValues registro = new ContentValues();

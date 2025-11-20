@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CandidatosActivity">
+
+    <!-- SCROLL GENERAL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- CONTENIDO GENERAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ENCABEZADO SERVEL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:text="SERVEL"
+                    android:textSize="60sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+            <!-- TÍTULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Candidatos Presidenciales"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textAllCaps="true"
+                android:textSize="19sp"
+                android:paddingVertical="10dp"
+                android:letterSpacing="0.02"/>
+
+            <!-- CARTA / CONTENEDOR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:orientation="vertical"
+                android:background="@drawable/carta_redondeada"
+                android:padding="20dp"
+                android:elevation="4dp"
+                android:layout_marginHorizontal="20dp">
+
+                <!-- Recycler dinámico -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listaCandidatos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"/>
+
+                <!-- BOTÓN VOLVER -->
+                <Button
+                    android:id="@+id/botonVolver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Volver"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/boton_estilo_servel_ripple"
+                    app:backgroundTint="@color/red"/>
+            </LinearLayout>
+
+            <!-- FOOTER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="© 2025 DefySiensia."
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,6 +74,7 @@
                         android:layout_marginBottom="15dp">
 
                         <Button
+                            android:id="@+id/boton_cambio_domicilio"
                             android:layout_width="150dp"
                             android:layout_height="110dp"
                             android:layout_gravity="center"
@@ -85,6 +86,7 @@
                             android:text="Cambio de Domicilio"/>
 
                         <Button
+                            android:id="@+id/boton_incorporacion_1"
                             android:layout_width="150dp"
                             android:layout_height="110dp"
                             android:layout_gravity="center"
@@ -106,6 +108,7 @@
                         android:layout_marginBottom="15dp">
 
                         <Button
+                            android:id="@+id/boton_afiliacion"
                             android:layout_width="150dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
@@ -117,6 +120,7 @@
                             app:backgroundTint="@null"/>
 
                         <Button
+                            android:id="@+id/boton_incorporacion_2"
                             android:layout_width="150dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
@@ -126,7 +130,7 @@
                             android:textColor="@color/red"
                             android:textStyle="bold"
                             android:layout_marginLeft="40dp"
-                            android:text="Incorporación al registro electoral"/>
+                            android:text="Incorporación al registro electoral" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -134,11 +138,12 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="© 2025 DefySiensia."
                 android:textAlignment="center"
-                android:layout_marginTop="10dp"
-                android:text="© 2025 DefySiensia."/>
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
     </ScrollView>

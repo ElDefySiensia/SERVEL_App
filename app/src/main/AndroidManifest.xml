@@ -13,6 +13,11 @@
         android:theme="@style/Theme.SERVEL_App">
 
         <!-- Aqui las activities -->
+        <activity android:name=".ModificarPerfilActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".VerPerfilActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".CandidatosActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".VotoExteriorActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TramitesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".DatosElectoralesActivity" android:screenOrientation="portrait"/>
         <activity android:name=".VotoEnLineaActivity" android:screenOrientation="portrait"/>
         <activity android:name=".PortalActivity" android:screenOrientation="portrait"/>

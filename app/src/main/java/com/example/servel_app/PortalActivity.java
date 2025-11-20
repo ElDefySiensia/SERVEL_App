@@ -1,6 +1,7 @@
 package com.example.servel_app;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -12,27 +13,26 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class PortalActivity extends AppCompatActivity {
 
-    //atributos
-    private Button botonDatosElectorales, botonTramites, botonVotoExterior, botonConoceCandidatos, botonJuntasElectorales, botonDemocraciaDesinformacion, botonFormacionCiudadana, botonCerrarSesion;
+    private Button botonDatosElectorales, botonTramites, botonVotoExterior, botonConoceCandidatos,
+            botonJuntasElectorales, botonDemocraciaDesinformacion, botonFormacionCiudadana,
+            botonCerrarSesion, botonPerfil;
 
-    //onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_mi_portal);
 
-        //esto trae el rut desde login
         String rut = getIntent().getStringExtra("rutUsuario");
 
-        //ajuste de márgenes
+        // Ajuste de márgenes
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            Insets sb = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(sb.left, sb.top, sb.right, sb.bottom);
             return insets;
         });
 
-        //instancias de los atributos
+        // Instancias de botones
         botonDatosElectorales = findViewById(R.id.boton_datos_electorales);
         botonTramites = findViewById(R.id.boton_tramites);
         botonVotoExterior = findViewById(R.id.boton_voto_exterior);
@@ -41,23 +41,57 @@ public class PortalActivity extends AppCompatActivity {
         botonDemocraciaDesinformacion = findViewById(R.id.boton_democracia_desinformacion);
         botonFormacionCiudadana = findViewById(R.id.boton_formacion_ciudadana);
         botonCerrarSesion = findViewById(R.id.boton_cerrar_sesion);
+        botonPerfil = findViewById(R.id.boton_perfil);
 
-        //metodo boton datos electorales
+        // Listeners
         botonDatosElectorales.setOnClickListener(v -> {
-            //intent para dirigirnos a los datos electorales
-            Intent datosElectorales = new Intent(PortalActivity.this, DatosElectoralesActivity.class);
-            //esto trae el rut de login para mostrarlo mas tarde
-            datosElectorales.putExtra("rutUsuario", rut);
-            startActivity(datosElectorales);
+            Intent i = new Intent(this, DatosElectoralesActivity.class);
+            i.putExtra("rutUsuario", rut);
+            startActivity(i);
         });
 
-        //aqui van los demas metodos
+        botonTramites.setOnClickListener(v -> {
+            Intent i = new Intent(this, TramitesActivity.class);
+            i.putExtra("rutUsuario", rut);
+            startActivity(i);
+        });
 
-        //metodo para cerrar sesion
+        botonVotoExterior.setOnClickListener(v -> {
+            Intent i = new Intent(this, VotoExteriorActivity.class);
+            i.putExtra("rutUsuario", rut);
+            startActivity(i);
+        });
+
+        botonConoceCandidatos.setOnClickListener(v -> {
+            Intent i = new Intent(this, CandidatosActivity.class);
+            i.putExtra("rutUsuario", rut);
+            startActivity(i);
+        });
+
+        botonJuntasElectorales.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.servel.cl/contacto/juntas-electorales/"));
+            startActivity(i);
+        });
+
+        botonDemocraciaDesinformacion.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.servel.cl/desinformacion/"));
+            startActivity(i);
+        });
+
+        botonFormacionCiudadana.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://formacionciudadana.servel.cl/"));
+            startActivity(i);
+        });
+
+        botonPerfil.setOnClickListener(v -> {
+            Intent i = new Intent(this, VerPerfilActivity.class);
+            i.putExtra("rutUsuario", rut);
+            startActivity(i);
+        });
+
         botonCerrarSesion.setOnClickListener(v -> {
-            //intent para volver al login y cerrar sesión
-            Intent cerrarSesion = new Intent(PortalActivity.this, LoginActivity.class);
-            startActivity(cerrarSesion);
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
             finish();
         });
     }

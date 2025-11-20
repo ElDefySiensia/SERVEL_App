@@ -68,88 +68,89 @@
                     android:padding="20dp"
                     android:layout_marginHorizontal="20dp">
 
-                    <TextView
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/profile"
+                        android:layout_gravity="center"/>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAllCaps="true"
-                        android:letterSpacing="0.02"
-                        android:paddingVertical="10dp"
-                        android:text="Nueva cuenta"
-                        android:textColor="@color/black"
-                        android:textSize="19sp"
-                        android:textAlignment="center"/>
+                        android:orientation="horizontal"
+                        android:background="@color/gray">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rut:"
+                            android:layout_marginLeft="5dp"
+                            android:paddingVertical="10dp"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:id="@+id/tv_rut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="N/A"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text="Ingresa tu rut:"/>
+                        android:orientation="horizontal"
+                        android:background="@color/white">
 
-                    <EditText
-                        android:id="@+id/rut_registrar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Ej. 11222333-4"
-                        android:inputType="text"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre:"
+                            android:layout_marginLeft="5dp"
+                            android:paddingVertical="10dp"
+                            android:textSize="18sp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="10dp"
-                        android:text="Ingresa una clave:"/>
-
-                    <EditText
-                        android:id="@+id/clave_registrar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Ej. 1234"
-                        android:inputType="textPassword"
-                        android:importantForAutofill="no"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="10dp"
-                        android:text="Ingresa la clave nuevamente:"/>
-
-                    <EditText
-                        android:id="@+id/clave_confirmar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:importantForAutofill="no"/>
-
-                    <CheckBox
-                        android:id="@+id/check_condiciones"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Acepto que mis datos serán utilizados para el uso de esta aplicación."/>
-
+                        <TextView
+                            android:id="@+id/tv_nombre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:text="N/A"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
 
                     <Button
-                        android:id="@+id/boton_crear_cuenta"
+                        android:id="@+id/boton_eliminar_cuenta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:background="@drawable/boton_estilo_servel_ripple"
-                        android:text="Crear Cuenta"
-                        android:backgroundTint="@null"
+                        app:backgroundTint="@color/red"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Eliminar Cuenta"
+                        android:layout_marginVertical="10dp"
+                        android:textSize="15sp"/>/>
+
+                    <Button
+                        android:id="@+id/boton_modificar_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/boton_estilo_servel_ripple"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:text="Modificar Nombre"
+                        android:layout_marginVertical="10dp"
+                        android:textSize="15sp"/>/>
 
                     <Button
-                        android:id="@+id/boton_volver_a_login"
+                        android:id="@+id/boton_volver_atras"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/boton_estilo_servel_ripple"
-                        android:text="Volver a Inicio de Sesión"
+                        android:text="Volver Atras"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
                         android:textColor="@color/red"
@@ -167,6 +168,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
+
 
         </LinearLayout>
     </ScrollView>

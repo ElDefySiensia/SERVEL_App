@@ -79,6 +79,7 @@
                         android:paddingVertical="20dp"/>
 
                     <CheckBox
+                        android:id="@+id/check_condiciones"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Confirmo que mi voto es el correcto."/>
@@ -114,11 +115,12 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="© 2025 DefySiensia."
                 android:textAlignment="center"
-                android:layout_marginTop="10dp"
-                android:text="© 2025 DefySiensia."/>
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
     </ScrollView>

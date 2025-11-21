@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "505834192262",
+    "project_id": "servelapp-7771d",
+    "storage_bucket": "servelapp-7771d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505834192262:android:d9f981bcb6837c11bf4007",
+        "android_client_info": {
+          "package_name": "com.example.servel_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe0nFoJCqSB68GAjl6zjHsS60POF8H9Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

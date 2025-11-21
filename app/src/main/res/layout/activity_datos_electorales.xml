@@ -5,20 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".DatosElectoralesActivity">
 
-    <!-- VISTA SCROLLABLE -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- CONTENIDO -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ENCABEZADO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,17 +32,14 @@
                     android:textSize="60dp"
                     android:textAlignment="center"
                     android:text="SERVEL"/>
-
             </LinearLayout>
 
 
-            <!-- CUERPO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- CARTA -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,10 +47,10 @@
                     android:orientation="vertical"
                     android:background="@drawable/carta_redondeada"
                     android:elevation="4dp"
+                    android:paddingBottom="15dp"
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -66,114 +60,295 @@
                         android:textSize="19dp"
                         android:textAlignment="center"/>
 
-                    <TextView
-                        android:id="@+id/tv_run"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="RUN"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_nombre"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="RUN"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_run"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargando..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_blanco"
-                        android:text="Nombre"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_circunscripcion"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Nombre"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_nombre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargando..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="Circunscripción"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_distrito"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Circunscripción"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_circunscripcion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_blanco"
-                        android:text="Distrito"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_pais"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Distrito"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_distrito"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="País"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_habilitado_sufragar"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="País"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_pais"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_blanco"
-                        android:text="Habilitado para sufragar"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_local_votacion"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Habilitado"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_habilitado_sufragar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="Local de votación"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_direccion_local"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Local Votación"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_local_votacion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxWidth="180dp"
+                            android:textAlignment="viewEnd"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_blanco"
-                        android:text="Dirección del Local"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_mesa"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Dirección"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_direccion_local"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxWidth="180dp"
+                            android:textAlignment="viewEnd"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="Mesa"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mesa"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_mesa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="10dp"
                         android:text="Designaciones"
                         android:textColor="@color/black"
                         android:textSize="19dp"
                         android:textAlignment="center"/>
 
-                    <TextView
-                        android:id="@+id/tv_vocal_mesa"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_blanco"
-                        android:text="Vocal de Mesa"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/tv_miembro_colegio_escrutador"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Vocal de Mesa"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_vocal_mesa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/cuadrado_gris"
-                        android:text="Miembro Colegio Escrutador"
-                        android:textSize="16dp"
-                        android:textColor="@color/black"/>
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Miembro Colegio Escrutador"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_miembro_colegio_escrutador"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="16dp"/>
+                    </LinearLayout>
+
 
                     <Button
                         android:id="@+id/boton_voto_en_linea"
@@ -185,7 +360,7 @@
                         android:textColor="@color/red"
                         android:textStyle="bold"
                         android:text="Voto en Línea"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:textSize="15dp"/>
 
                     <Button
@@ -202,8 +377,6 @@
                         android:textSize="15dp"/>
 
                 </LinearLayout>
-                <!-- CARTA -->
-
             </LinearLayout>
 
             <TextView

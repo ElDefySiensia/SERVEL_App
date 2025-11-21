@@ -26,6 +26,7 @@ public class VotoEnLineaActivity extends AppCompatActivity {
     private ArrayList<String> nombresCandidatos = new ArrayList<>();
     private ArrayList<Integer> idsCandidatos = new ArrayList<>();
     private int candidatoSeleccionado = -1;
+    private AdminSQLiteOpenHelper admin; // Declarar variable global
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,87 +39,100 @@ public class VotoEnLineaActivity extends AppCompatActivity {
         botonEnviar = findViewById(R.id.boton_enviar_voto);
         botonCancelar = findViewById(R.id.boton_cancelar_voto);
 
-        // Obtener rut
         rutUsuario = getIntent().getStringExtra("rutUsuario");
         if (rutUsuario == null || rutUsuario.isEmpty()) {
-            Toast.makeText(this, "Error: no se recibió RUT del usuario", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error de sesión", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        // Conectar a BD y cargar candidatos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "servel.db", null, 1);
-        SQLiteDatabase db = admin.getReadableDatabase();
+        // Inicializamos la BD con versión 1
+        admin = new AdminSQLiteOpenHelper(this, "servel.db", null, 1);
 
-        Cursor cursor = db.rawQuery("SELECT id_candidato, nombre, partido FROM datos_candidatos", null);
-        nombresCandidatos.clear();
-        idsCandidatos.clear();
+        cargarCandidatos();
 
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(cursor.getColumnIndexOrThrow("id_candidato"));
-            String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
-            String partido = cursor.getString(cursor.getColumnIndexOrThrow("partido"));
-            nombresCandidatos.add(nombre + " (" + partido + ")");
-            idsCandidatos.add(id);
-        }
-
-        cursor.close();
-        db.close();
-
-        // Adaptador para ListView
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, nombresCandidatos);
-        listaCandidatos.setAdapter(adapter);
-        listaCandidatos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        listaCandidatos.setOnItemClickListener((parent, view, position, id) -> candidatoSeleccionado = idsCandidatos.get(position));
-
-        // Botón enviar voto
-        botonEnviar.setOnClickListener(v -> {
-            if (candidatoSeleccionado == -1) {
-                Toast.makeText(this, "Seleccione un candidato", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (!cbConfirmar.isChecked()) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Confirmación requerida")
-                        .setMessage("Debe marcar la casilla para confirmar que su voto es correcto antes de continuar.")
-                        .setPositiveButton("Aceptar", null)
-                        .show();
-                return;
-            }
-
-            // Guardar voto
-            SQLiteDatabase dbVoto = admin.getWritableDatabase();
-            try {
-                dbVoto.execSQL("UPDATE usuarios SET votoRealizado = 1 WHERE rut = ?", new Object[]{rutUsuario});
-                dbVoto.execSQL("UPDATE datos_candidatos SET votos = votos + 1 WHERE id_candidato = ?", new Object[]{candidatoSeleccionado});
-            } finally {
-                dbVoto.close();
-            }
-
-            new AlertDialog.Builder(this)
-                    .setTitle("Voto registrado")
-                    .setMessage("Su voto ha sido registrado correctamente. ¡Gracias por participar!")
-                    .setPositiveButton("Aceptar", (dialog, which) -> {
-                        startActivity(new Intent(VotoEnLineaActivity.this, PortalActivity.class));
-                        finish();
-                    })
-                    .setCancelable(false)
-                    .show();
+        // Lógica de selección de la lista
+        listaCandidatos.setOnItemClickListener((parent, view, position, id) -> {
+            candidatoSeleccionado = idsCandidatos.get(position);
         });
 
-        // Botón cancelar voto
+        botonEnviar.setOnClickListener(v -> procesarVoto());
+
         botonCancelar.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Cancelar voto")
-                    .setMessage("¿Está seguro que desea cancelar el voto?")
-                    .setPositiveButton("Sí", (dialog, which) -> {
-                        startActivity(new Intent(VotoEnLineaActivity.this, PortalActivity.class));
+                    .setTitle("Cancelar")
+                    .setMessage("¿Desea salir sin votar?")
+                    .setPositiveButton("Sí", (d, w) -> {
+                        // AQUÍ ESTÁ LA CLAVE:
+                        Intent intent = new Intent(VotoEnLineaActivity.this, PortalActivity.class);
+
+                        // Pasamos el RUT de nuevo para que el Portal sepa quién es
+                        intent.putExtra("rutUsuario", rutUsuario);
+
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                         finish();
                     })
                     .setNegativeButton("No", null)
                     .show();
         });
+    }
+
+    private void cargarCandidatos() {
+        SQLiteDatabase db = admin.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT id_candidato, nombre, partido FROM datos_candidatos", null);
+
+        nombresCandidatos.clear();
+        idsCandidatos.clear();
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String partido = cursor.getString(2);
+            nombresCandidatos.add(nombre + "\n(" + partido + ")");
+            idsCandidatos.add(id);
+        }
+        cursor.close();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, nombresCandidatos);
+        listaCandidatos.setAdapter(adapter);
+        listaCandidatos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+    }
+
+    private void procesarVoto() {
+        if (candidatoSeleccionado == -1) {
+            Toast.makeText(this, "Debe seleccionar un candidato", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!cbConfirmar.isChecked()) {
+            Toast.makeText(this, "Confirme su voto marcando la casilla", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //metodo del helper
+        boolean exito = admin.registrarVoto(rutUsuario, candidatoSeleccionado);
+
+        if (exito) {
+            new AlertDialog.Builder(this)
+                    .setTitle("¡Voto Exitoso!")
+                    .setMessage("Su sufragio ha sido registrado correctamente.")
+                    .setPositiveButton("Volver al inicio", (dialog, which) -> {
+
+                        Intent intent = new Intent(VotoEnLineaActivity.this, PortalActivity.class);
+
+                        // AQUÍ TAMBIÉN: Pasamos el RUT de vuelta
+                        intent.putExtra("rutUsuario", rutUsuario);
+
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .setCancelable(false)
+                    .show();
+        } else {
+            Toast.makeText(this, "Error: Ya se registró un voto para este usuario.", Toast.LENGTH_LONG).show();
+            botonEnviar.setEnabled(false); // Desactivar botón si ya votó
+        }
     }
 }

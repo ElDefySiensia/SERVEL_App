@@ -29,7 +29,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "servel.db", null, 1);
 
         // mostrar el nombre actual
-        Cursor cursor = admin.obtenerDatosCompletos(rut);
+        Cursor cursor = admin.obtenerDatosUsuario(rut);
         if (cursor.moveToFirst()) {
             etNuevoNombre.setText(cursor.getString(cursor.getColumnIndexOrThrow("nombre")));
         }
@@ -41,7 +41,9 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                 Toast.makeText(this, "Ingrese un nombre válido", Toast.LENGTH_SHORT).show();
                 return;
             }
-            boolean actualizado = admin.actualizarNombre(rut, nuevoNombre);
+
+            boolean actualizado = admin.actualizarNombreUsuario(rut, nuevoNombre);
+
             if (actualizado) {
                 Toast.makeText(this, "Nombre actualizado", Toast.LENGTH_SHORT).show();
                 finish();

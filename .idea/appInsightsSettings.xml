@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.servel_app" />
+                  <option name="mobileSdkAppId" value="1:505834192262:android:d9f981bcb6837c11bf4007" />
+                  <option name="projectId" value="servelapp-7771d" />
+                  <option name="projectNumber" value="505834192262" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

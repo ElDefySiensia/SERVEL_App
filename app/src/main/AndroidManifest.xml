@@ -13,8 +13,9 @@
         android:theme="@style/Theme.SERVEL_App">
 
         <!-- Aqui las activities -->
-        <activity android:name=".ModificarPerfilActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".VerPerfilActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".CambioDomicilioActivity" android:screenOrientation="portrait"/> <!-- El portrait es porque soy un desgraciado -->
+        <activity android:name=".ModificarPerfilActivity" android:screenOrientation="portrait"/> <!-- Y no queria compatibilizar con landscape -->
+        <activity android:name=".VerPerfilActivity" android:screenOrientation="portrait"/> <!-- jejeje -->
         <activity android:name=".CandidatosActivity" android:screenOrientation="portrait"/>
         <activity android:name=".VotoExteriorActivity" android:screenOrientation="portrait"/>
         <activity android:name=".TramitesActivity" android:screenOrientation="portrait"/>

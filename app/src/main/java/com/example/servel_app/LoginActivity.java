@@ -1,14 +1,10 @@
 package com.example.servel_app;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,39 +12,56 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.servel_app.repositorio.FirebaseRepositorio; // Importar el repositorio de Firebase
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class LoginActivity extends AppCompatActivity {
 
-    //atributos
+    // atributos
     private EditText rutLogin, claveLogin;
     private Button botonIngresar, botonRegistrate;
 
-    //onCreate
+    // INSTANCIA DEL REPOSITORIO DE FIREBASE
+    private FirebaseRepositorio firebaseRepo;
+
+    // onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        //ajuste de márgenes
+        // Inicializar Repositorio
+        firebaseRepo = new FirebaseRepositorio();
+
+        // Si ya hay un usuario logueado en Firebase, navegamos al Portal inmediatamente
+        String rutActual = firebaseRepo.getRUTUsuarioActual();
+        if (rutActual != null) {
+            navegarAPortal(rutActual);
+            return; // Detenemos la ejecución de onCreate si navegamos
+        }
+
+        // ajuste de márgenes
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        //instancias de los atributos
+        // instancias de los atributos
         rutLogin = findViewById(R.id.rut_login);
         claveLogin = findViewById(R.id.clave_login);
         botonIngresar = findViewById(R.id.boton_ingresar);
         botonRegistrate = findViewById(R.id.boton_registrate);
 
-        //metodo para ingresar a la app
+        // metodo para ingresar a la app
         botonIngresar.setOnClickListener(v -> {
-            //definimos variables
-            String rut = rutLogin.getText().toString();
-            String clave = claveLogin.getText().toString();
+            String rut = rutLogin.getText().toString().trim();
+            String clave = claveLogin.getText().toString().trim();
 
-            //validacion de datos
+            // validacion de datos
             if (rut.isEmpty()) {
                 rutLogin.setError("Ingrese su Rut");
                 Toast.makeText(this, "Por favor ingrese su Rut", Toast.LENGTH_SHORT).show();
@@ -60,39 +73,15 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            //CONEXIÓN A LA BD
-            com.example.servel_app.db.AdminSQLiteOpenHelper admin =
-                    new com.example.servel_app.db.AdminSQLiteOpenHelper(this, "servel.db", null, 1);
-            SQLiteDatabase db = admin.getReadableDatabase();
+            // AHORA USAMOS FIREBASE PARA LA AUTENTICACIÓN
+            iniciarSesionConFirebase(rut, clave);
 
-            //convertimos la clave a SHA-256 para comparar con la BD
-            String claveHash = Utils.encriptarSHA256(clave);
-
-            //consulta SQL para verificar el usuario
-            Cursor cursor = db.rawQuery(
-                    "SELECT * FROM usuarios WHERE rut=? AND clave_unica=?",
-                    new String[]{rut, claveHash}
-            );
-
-            if (cursor.moveToFirst()) {
-                //login exitoso: enviamos al portal
-                Intent loginExitoso = new Intent(LoginActivity.this, PortalActivity.class);
-                loginExitoso.putExtra("rutUsuario", rut);
-                startActivity(loginExitoso);
-                finish();
-            } else {
-                //error de login
-                Toast.makeText(this, "Rut o Clave incorrectos, vuelva a intentar", Toast.LENGTH_SHORT).show();
-                rutLogin.setError("Rut incorrecto");
-                claveLogin.setError("Clave incorrecta");
-            }
-
-            //cerrar conexión
-            cursor.close();
-            db.close();
+            // Nota: La encriptación SHA-256 ya no es necesaria aquí para el login,
+            // ya que Firebase maneja la clave. Si la necesitas para otra cosa,
+            // la clase Utils se mantiene al final.
         });
 
-        //metodo para el boton registrate
+        // metodo para el boton registrate
         botonRegistrate.setOnClickListener(v -> {
             Intent registrate = new Intent(LoginActivity.this, RegistroActivity.class);
             startActivity(registrate);
@@ -100,7 +89,39 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    //convertir claves encriptadas para login
+    // ------------------------------------
+    // LÓGICA DE FIREBASE AUTENTICACIÓN
+    // ------------------------------------
+
+    private void iniciarSesionConFirebase(String rut, String clave) {
+        Toast.makeText(this, "Verificando credenciales...", Toast.LENGTH_SHORT).show();
+
+        firebaseRepo.iniciarSesion(rut, clave, new FirebaseRepositorio.AuthCallback() {
+            @Override
+            public void onSuccess(String usuarioRut) {
+                // Login exitoso
+                Toast.makeText(LoginActivity.this, "¡Bienvenido/a!", Toast.LENGTH_SHORT).show();
+                navegarAPortal(usuarioRut);
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                // Error de login
+                Toast.makeText(LoginActivity.this, "Error de autenticación: Rut o Clave incorrectos", Toast.LENGTH_LONG).show();
+                rutLogin.setError(null); // Limpiamos errores previos si son internos de Firebase
+                claveLogin.setError(null);
+            }
+        });
+    }
+
+    private void navegarAPortal(String rut) {
+        Intent loginExitoso = new Intent(LoginActivity.this, PortalActivity.class);
+        loginExitoso.putExtra("rutUsuario", rut);
+        startActivity(loginExitoso);
+        finish();
+    }
+
+    // Convertir claves encriptadas (se mantiene por si acaso, aunque no se usa en el login de Firebase)
     public static class Utils {
         public static String encriptarSHA256(String input) {
             try {

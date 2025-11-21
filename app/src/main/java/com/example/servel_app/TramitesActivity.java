@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,63 +12,61 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-//Activity que muestra los trámites disponibles
 public class TramitesActivity extends AppCompatActivity {
 
-    //atributos
     private Button botonCambioDomicilio, botonIncorporacion1, botonAfiliacionPartidos, botonIncorporacion2;
+    private String rutUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-
-        //vista asociada a los trámites
         setContentView(R.layout.activity_tramites);
 
-        //ajuste de márgenes (para barras del sistema)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        //instancias de los botones (pon exactamente los IDs de tu XML)
+        //Recuperar el RUT del usuario que viene de la actividad anterior
+        rutUsuario = getIntent().getStringExtra("rutUsuario");
+
         botonCambioDomicilio = findViewById(R.id.boton_cambio_domicilio);
         botonIncorporacion1 = findViewById(R.id.boton_incorporacion_1);
         botonAfiliacionPartidos = findViewById(R.id.boton_afiliacion);
         botonIncorporacion2 = findViewById(R.id.boton_incorporacion_2);
 
-        //boton Cambio de Domicilio
+        // --- FUNCIONALIDAD BOTONES ---
+
+        //CAMBIO DE DOMICILIO
         botonCambioDomicilio.setOnClickListener(v -> {
-            //URL del trámite Cambio de Domicilio (la añades tú aquí)
-            String url = "";  // <-- pega aquí tu URL
-            abrirURL(url);
+            if (rutUsuario != null) {
+                Intent intent = new Intent(TramitesActivity.this, CambioDomicilioActivity.class);
+                intent.putExtra("rutUsuario", rutUsuario); // Pasamos el RUT
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Error: Sesión no válida", Toast.LENGTH_SHORT).show();
+            }
         });
 
-        //incorporación al registro electoral (primer botón)
+        //INCORPORACIÓN
         botonIncorporacion1.setOnClickListener(v -> {
-            //URL del trámite que quieras enlazar
-            String url = "";  // <-- pega aquí tu URL
-            abrirURL(url);
+            abrirURL("https://www.chileatiende.gob.cl/fichas/11079-solicitud-de-incorporacion-al-registro-electoral");
         });
 
-        //solicitud de Afiliación a Partidos Políticos
+        //AFILIACIÓN PARTIDOS
         botonAfiliacionPartidos.setOnClickListener(v -> {
-            //URL del trámite de afiliación
-            String url = "";  // <-- pega aquí tu URL
-            abrirURL(url);
+            abrirURL("https://partidos.servel.cl/");
         });
 
-        //incorporación al registro electoral (segundo botón)
+        //CONSULTA DE DATOS
         botonIncorporacion2.setOnClickListener(v -> {
-            //URL correspondiente
-            String url = ""; // <-- pega aquí tu URL
-            abrirURL(url);
+            // Nota: Asumí que el 4to botón era consulta por el nombre en tu XML anterior
+            abrirURL("https://consulta.servel.cl/");
         });
     }
 
-    //metodo para abrir URLs en el navegador
     private void abrirURL(String url){
         if(url == null || url.isEmpty()) return;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

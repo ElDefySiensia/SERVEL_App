@@ -60,13 +60,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
+                    android:layout_marginHorizontal="20dp"
                     android:orientation="vertical"
                     android:background="@drawable/carta_redondeada"
                     android:padding="20dp"
-                    android:elevation="4dp"
-                    android:layout_marginHorizontal="20dp">
+                    android:elevation="4dp">
 
-                    <!-- FILA INEFICIENTE -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -75,11 +74,12 @@
 
                         <Button
                             android:id="@+id/boton_cambio_domicilio"
-                            android:layout_width="150dp"
+                            android:layout_width="0dp"
                             android:layout_height="110dp"
-                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center"
                             android:background="@drawable/boton_estilo_servel_ripple"
-                            android:backgroundTint="@null"
                             app:backgroundTint="@null"
                             android:textColor="@color/red"
                             android:textStyle="bold"
@@ -87,20 +87,19 @@
 
                         <Button
                             android:id="@+id/boton_incorporacion_1"
-                            android:layout_width="150dp"
+                            android:layout_width="0dp"
                             android:layout_height="110dp"
-                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
                             android:background="@drawable/boton_estilo_servel_ripple"
-                            android:backgroundTint="@null"
                             app:backgroundTint="@null"
                             android:textColor="@color/red"
                             android:textStyle="bold"
-                            android:layout_marginLeft="40dp"
                             android:text="Incorporación al registro electoral"/>
 
                     </LinearLayout>
 
-                    <!-- FILA INEFICIENTE -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,28 +108,29 @@
 
                         <Button
                             android:id="@+id/boton_afiliacion"
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="110dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center"
                             android:background="@drawable/boton_estilo_servel_ripple"
-                            android:backgroundTint="@null"
-                            android:text="Solicitud de Afiliación a Partidos Políticos"
+                            app:backgroundTint="@null"
+                            android:text="Solicitud de Afiliación"
                             android:textColor="@color/red"
-                            android:textStyle="bold"
-                            app:backgroundTint="@null"/>
+                            android:textStyle="bold"/>
 
                         <Button
                             android:id="@+id/boton_incorporacion_2"
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="110dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
                             android:background="@drawable/boton_estilo_servel_ripple"
-                            android:backgroundTint="@null"
                             app:backgroundTint="@null"
                             android:textColor="@color/red"
                             android:textStyle="bold"
-                            android:layout_marginLeft="40dp"
-                            android:text="Incorporación al registro electoral" />
+                            android:text="Consulta de datos" />
 
                     </LinearLayout>
                 </LinearLayout>

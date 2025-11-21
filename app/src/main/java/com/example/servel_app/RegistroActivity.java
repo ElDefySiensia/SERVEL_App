@@ -124,7 +124,7 @@ public class RegistroActivity extends AppCompatActivity {
         });
     }
 
-    // Método que maneja la inserción en SQLite (manteniendo la lógica previa)
+    //metodo que maneja la inserción en SQLite (manteniendo la lógica previa)
     private void insertarDatosEnSQLite(String rut, String clave) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "servel.db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
